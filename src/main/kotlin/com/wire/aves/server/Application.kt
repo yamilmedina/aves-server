@@ -1,17 +1,24 @@
 package com.wire.aves.server
 
 import com.wire.aves.server.application.configureRouting
+import com.wire.aves.server.infrastructure.configureContentNegotiation
 import com.wire.aves.server.infrastructure.configureSecurity
 import io.ktor.server.application.Application
+import io.ktor.server.engine.applicationEngineEnvironment
+import io.ktor.server.engine.connector
 import io.ktor.server.engine.embeddedServer
 import io.ktor.server.netty.Netty
 
 fun main() {
-    embeddedServer(Netty, port = 8080, host = "0.0.0.0", module = Application::module)
-        .start(wait = true)
+    val environment = applicationEngineEnvironment {
+        connector { port = 8080 }
+        module(Application::module)
+    }
+    embeddedServer(Netty, environment).start(wait = true)
 }
 
 fun Application.module() {
+    configureContentNegotiation()
     configureSecurity()
     configureRouting()
 }
