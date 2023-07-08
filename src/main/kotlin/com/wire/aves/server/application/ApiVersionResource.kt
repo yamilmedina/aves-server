@@ -20,5 +20,5 @@ data class Versions(
     var development: Set<Int> = setOf(2),
     var domain: String = "aves.com",
     var federation: Boolean = false,
-    var supported: List<Int> = listOf(2),
+    var supported: Set<Int> = setOf(2),
 )
