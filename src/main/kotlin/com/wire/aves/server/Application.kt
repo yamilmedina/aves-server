@@ -3,6 +3,7 @@ package com.wire.aves.server
 import com.wire.aves.server.application.configureRouting
 import com.wire.aves.server.infrastructure.configureContentNegotiation
 import com.wire.aves.server.infrastructure.configureSecurity
+import com.wire.aves.server.infrastructure.configureSwaggerApiDocs
 import io.ktor.server.application.Application
 import io.ktor.server.engine.applicationEngineEnvironment
 import io.ktor.server.engine.connector
@@ -19,6 +20,7 @@ fun main() {
 
 fun Application.module() {
     configureContentNegotiation()
+    configureSwaggerApiDocs()
     configureSecurity()
     configureRouting()
 }
