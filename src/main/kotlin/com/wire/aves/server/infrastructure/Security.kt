@@ -1,4 +1,4 @@
-package com.wire.aves.server.plugins
+package com.wire.aves.server.infrastructure
 
 import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm

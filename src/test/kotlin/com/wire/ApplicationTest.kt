@@ -1,12 +1,11 @@
 package com.wire
 
-import com.wire.aves.server.plugins.configureRouting
+import com.wire.aves.server.application.configureRouting
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.server.testing.*
 import kotlin.test.*
 import io.ktor.http.*
-import com.wire.plugins.*
 
 class ApplicationTest {
     @Test

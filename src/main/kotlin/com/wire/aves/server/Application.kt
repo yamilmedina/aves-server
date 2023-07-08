@@ -1,7 +1,7 @@
 package com.wire.aves.server
 
-import com.wire.aves.server.plugins.configureRouting
-import com.wire.aves.server.plugins.configureSecurity
+import com.wire.aves.server.application.configureRouting
+import com.wire.aves.server.infrastructure.configureSecurity
 import io.ktor.server.application.Application
 import io.ktor.server.engine.embeddedServer
 import io.ktor.server.netty.Netty
