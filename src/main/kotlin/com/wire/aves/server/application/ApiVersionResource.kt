@@ -1,16 +1,19 @@
 package com.wire.aves.server.application
 
+import io.github.smiley4.ktorswaggerui.dsl.get
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.call
 import io.ktor.server.response.respond
 import io.ktor.server.routing.Route
-import io.ktor.server.routing.get
 import io.ktor.server.routing.route
 import kotlinx.serialization.Serializable
 
-// todo: add swagger
 fun Route.apiVersion() = route("/api-version") {
-    get {
+    get({
+        description = "Get API Version"
+        request { }
+        response { HttpStatusCode.OK to { body<Versions> { } } }
+    }) {
         call.respond(HttpStatusCode.OK, Versions())
     }
 }

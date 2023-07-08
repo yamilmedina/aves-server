@@ -25,6 +25,9 @@ dependencies {
     implementation(libs.ktor.server.netty)
     implementation(libs.ktor.server.auth)
     implementation(libs.ktor.server.authjwt)
+    implementation(libs.ktorSwaggerGenerator) {
+        exclude("org.slf4j", "slf4j-api")
+    }
 
     implementation(libs.exposed.core)
     implementation(libs.exposed.jdbc)
