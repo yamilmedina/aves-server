@@ -32,6 +32,7 @@ dependencies {
     implementation(libs.exposed.core)
     implementation(libs.exposed.jdbc)
     implementation(libs.sqliteJdbc)
+    implementation(libs.arrow)
 
     implementation(libs.logbackClassic)
 

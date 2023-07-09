@@ -18,6 +18,14 @@ fun main() {
     embeddedServer(Netty, environment).start(wait = true)
 }
 
+/**
+ * TODO(ym)...
+ * - add DI (koin).
+ * - add metrics + network logging interceptors with MDC.
+ * - add flyway
+ * - sec interceptor bearer token
+ * - add websocket as app boundary
+ */
 fun Application.module() {
     configureContentNegotiation()
     configureSwaggerApiDocs()
