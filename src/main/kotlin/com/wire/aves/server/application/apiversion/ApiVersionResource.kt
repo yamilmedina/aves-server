@@ -17,4 +17,3 @@ fun Route.apiVersion() = route("/api-version") {
         call.respond(HttpStatusCode.OK, currentVersion)
     }
 }
-

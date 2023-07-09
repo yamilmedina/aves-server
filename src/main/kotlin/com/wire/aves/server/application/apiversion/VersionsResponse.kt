@@ -10,7 +10,7 @@ data class VersionsResponse(
     var supported: Set<Int> = setOf(2),
 ) {
 
-    fun latest() = supported.max()
+    fun latest() = "api/v${supported.max()}"
 
     companion object {
         @JvmStatic

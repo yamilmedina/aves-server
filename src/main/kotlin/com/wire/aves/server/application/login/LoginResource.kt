@@ -1,74 +1,36 @@
 package com.wire.aves.server.application.login
 
 import com.wire.aves.server.application.apiversion.VersionsResponse
+import com.wire.aves.server.domain.usecase.PerformLoginUseCase
+import com.wire.aves.server.infrastructure.logging.AppLoggers.applicationLogger
 import io.github.smiley4.ktorswaggerui.dsl.post
 import io.ktor.http.HttpStatusCode
+import io.ktor.server.application.call
+import io.ktor.server.request.receive
+import io.ktor.server.response.respond
 import io.ktor.server.routing.Route
 import io.ktor.server.routing.route
+import org.koin.ktor.ext.inject
 
-fun Route.login() = route("/${VersionsResponse.currentVersion.latest()}/user") {
+fun Route.login() = route("${VersionsResponse.currentVersion.latest()}/user") {
+    val performLogin by inject<PerformLoginUseCase>()
+
     post({
         description = "Authenticate a user to obtain a cookie and first access token"
         request { body<SignInRequest>() }
         response { HttpStatusCode.Forbidden to { body<String> { } } }
     }) {
-        // validate params
-        // get user from db
-        // checkpass, if error 403
-
+        val loginRequest = call.receive<SignInRequest>()
+        performLogin(loginRequest.email, loginRequest.password).fold({
+            applicationLogger.error("Error while login in", it)
+            call.respond(HttpStatusCode.InternalServerError)
+        }) {
+            // later raise exception from domain
+            applicationLogger.debug("Is Login valid for user[${loginRequest.email}] -> $it")
+            call.respond(HttpStatusCode.OK)
+        }
         // build jwt with user id
         // generate access token
         // respoind with access token + cookie
     }
 }
-
-
-//@POST
-//@ApiOperation(value = "Authenticate a user to obtain a cookie and first access token")
-//@ApiResponses(value = {@ApiResponse(code = 403, message = "Wrong email or password")})
-//public Response user(@ApiParam @Valid SignIn signIn) {
-//    try {
-//        UserDAO userDAO = jdbi.onDemand(UserDAO.class);
-//
-//        String email = signIn.email.toLowerCase().trim();
-//
-//        String hashed = userDAO.getHash(email);
-//        if (hashed == null || !SCryptUtil.check(signIn.password, hashed)) {
-//            return Response
-//                .ok(new ErrorMessage("Authentication failed.", 403, "invalid-credentials"))
-//            .status(403)
-//                .build();
-//        }
-//
-//        UUID userId = userDAO.getUserId(email);
-//
-//        long mills = TimeUnit.SECONDS.toMillis(config.tokenExpiration);
-//        Date exp = new Date(new Date().getTime() + mills);
-//
-//        String token = Jwts.builder()
-//            .setIssuer("https://aves.com")
-//            .setSubject("" + userId)
-//            .setExpiration(exp)
-//            .signWith(Aves.getKey())
-//            .compact();
-//
-//        AccessToken result = new AccessToken();
-//        result.expiresIn = config.tokenExpiration;
-//        result.accessToken = token;
-//        result.tokenType = "Bearer";
-//        result.user = userId;
-//
-//        return Response.
-//        ok(result).
-//        cookie(new NewCookie("zuid", result.accessToken)).
-//        build();
-//    } catch (Exception e) {
-//        e.printStackTrace();
-//        Logger.error("LoginResource.user : %s", e);
-//        return Response
-//            .ok(new ErrorMessage("Authentication failed.", 403, "invalid-credentials"))
-//        .status(403)
-//            .build();
-//    }
-//}
-//}
