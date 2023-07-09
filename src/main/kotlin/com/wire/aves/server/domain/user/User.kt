@@ -1,9 +1,9 @@
 package com.wire.aves.server.domain.user
 
-import com.wire.aves.server.domain.id.QualifiedId
+import com.wire.aves.server.domain.id.UserId
 
 data class User(
-    val qualifiedId: QualifiedId,
+    val userId: UserId,
     val email: String,
     val phone: String,
     val name: String,

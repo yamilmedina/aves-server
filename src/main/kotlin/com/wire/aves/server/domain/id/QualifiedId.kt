@@ -7,3 +7,5 @@ data class QualifiedId(val id: UUID, val domain: String) {
         return "$id@$domain"
     }
 }
+
+typealias UserId = QualifiedId

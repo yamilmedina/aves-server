@@ -6,19 +6,8 @@ import com.wire.aves.server.infrastructure.configureKoin
 import com.wire.aves.server.infrastructure.configureSecurity
 import com.wire.aves.server.infrastructure.configureSwaggerApiDocs
 import io.ktor.server.application.Application
-import io.ktor.server.engine.applicationEngineEnvironment
-import io.ktor.server.engine.connector
-import io.ktor.server.engine.embeddedServer
-import io.ktor.server.netty.Netty
 
-fun main() {
-    val environment = applicationEngineEnvironment {
-        developmentMode = true
-        connector { port = 8080 }
-        module(Application::module)
-    }
-    embeddedServer(Netty, environment).start(wait = true)
-}
+fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
 /**
  * TODO(ym)...

@@ -19,6 +19,7 @@ repositories {
 
 dependencies {
     implementation(libs.ktor.server.core)
+    implementation(libs.ktor.server.yaml)
     implementation(libs.ktor.server.contentNegotiation)
     implementation(libs.ktor.serializationJson)
     implementation(libs.ktor.serializationProtobuf)
