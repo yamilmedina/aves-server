@@ -24,7 +24,7 @@ fun Application.configureRouting() {
         authenticate {
             get("/restricted", {
                 description = "Demo restricted api"
-                securitySchemeName = "MyJwtAuth"
+                securitySchemeName = "Auth"
                 request { }
                 response { }
             }) { call.respondText("Hello World, you are restricted!") }

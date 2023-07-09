@@ -21,7 +21,7 @@ fun Application.configureSwaggerApiDocs() {
             url = "http://0.0.0.0:8080"
             description = "Development Server"
         }
-        securityScheme("MyJwtAuth") {
+        securityScheme("Auth") {
             type = AuthType.HTTP
             scheme = AuthScheme.BEARER
             bearerFormat = "jwt"
