@@ -4,6 +4,8 @@ ktor = "2.3.2"
 logback = "1.2.11"
 exposed = "0.41.1"
 sqlite = "3.42.0.0"
+arrow = "1.2.0-RC"
+koin = "3.4.0"
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
@@ -15,14 +17,20 @@ ktor-server-core = { module = "io.ktor:ktor-server-core-jvm", version.ref = "kto
 ktor-server-contentNegotiation = { module = "io.ktor:ktor-server-content-negotiation-jvm", version.ref = "ktor" }
 ktor-server-auth = { module = "io.ktor:ktor-server-auth-jvm", version.ref = "ktor" }
 ktor-server-authjwt = { module = "io.ktor:ktor-server-auth-jwt-jvm", version.ref = "ktor" }
+ktor-server-yaml = { module = "io.ktor:ktor-server-config-yaml-jvm", version.ref = "ktor" }
+ktorSwaggerGenerator = { module = "io.github.smiley4:ktor-swagger-ui", version = "2.2.0" }
 
 ktor-server-netty = { module = "io.ktor:ktor-server-netty-jvm", version.ref = "ktor" }
 ktor-serializationJson = { module = "io.ktor:ktor-serialization-kotlinx-json-jvm", version.ref = "ktor" }
+ktor-serializationProtobuf = { module = "io.ktor:ktor-serialization-kotlinx-protobuf-jvm", version.ref = "ktor" }
 ktor-server-test = { module = "io.ktor:ktor-server-tests-jvm", version.ref = "ktor" }
 
+koin = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+koin-ktor = { module = "io.insert-koin:koin-ktor", version.ref = "koin" }
 exposed-core = { module = "org.jetbrains.exposed:exposed-core", version.ref = "exposed" }
 exposed-jdbc = { module = "org.jetbrains.exposed:exposed-jdbc", version.ref = "exposed" }
 sqliteJdbc = { module = "org.xerial:sqlite-jdbc", version.ref = "sqlite" }
+arrow = { module = "io.arrow-kt:arrow-core", version.ref = "arrow" }
 
 logbackClassic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }

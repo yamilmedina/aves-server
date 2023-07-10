@@ -19,15 +19,23 @@ repositories {
 
 dependencies {
     implementation(libs.ktor.server.core)
-    implementation(libs.ktor.serializationJson)
+    implementation(libs.ktor.server.yaml)
     implementation(libs.ktor.server.contentNegotiation)
+    implementation(libs.ktor.serializationJson)
+    implementation(libs.ktor.serializationProtobuf)
     implementation(libs.ktor.server.netty)
     implementation(libs.ktor.server.auth)
     implementation(libs.ktor.server.authjwt)
+    implementation(libs.ktorSwaggerGenerator) {
+        exclude("org.slf4j", "slf4j-api")
+    }
 
+    implementation(libs.koin)
+    implementation(libs.koin.ktor)
     implementation(libs.exposed.core)
     implementation(libs.exposed.jdbc)
     implementation(libs.sqliteJdbc)
+    implementation(libs.arrow)
 
     implementation(libs.logbackClassic)
 
