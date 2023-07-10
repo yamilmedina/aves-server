@@ -3,24 +3,21 @@ package com.wire.aves.server.infrastructure
 import com.auth0.jwt.JWT
 import com.auth0.jwt.JWTVerifier
 import com.auth0.jwt.algorithms.Algorithm
+import com.typesafe.config.ConfigFactory
 import com.wire.aves.server.infrastructure.logging.AppLoggers.infrastructureLogger
 import io.ktor.server.application.Application
 import io.ktor.server.auth.authentication
 import io.ktor.server.auth.jwt.JWTPrincipal
 import io.ktor.server.auth.jwt.jwt
+import io.ktor.server.config.HoconApplicationConfig
 import java.time.Instant
 import java.time.temporal.ChronoUnit
 import java.util.*
 
 fun Application.configureSecurity() {
-    val jwtRealm = this.environment.config.property("jwt.realm").getString()
-    val jwtIssuer = this.environment.config.property("jwt.issuer").getString()
-    val jwtSecret = this.environment.config.property("jwt.secret").getString()
-    JwtWrapper.init(jwtIssuer, jwtSecret)
-
     authentication {
         jwt {
-            realm = jwtRealm
+            realm = JwtWrapper.realm
             verifier(JwtWrapper.verifier())
             validate { credential ->
                 runCatching {
@@ -36,17 +33,12 @@ fun Application.configureSecurity() {
     }
 }
 
-/**
- * fixme(ym) can/must be improved, this instance should be generated lazy on demand
- * or somehow get environments confs from yml to get issuer and secret.
- */
 object JwtWrapper {
-    private var issuer: String? = null
-    private var secret: String? = null
-    fun init(issuer: String, secret: String) {
-        this.issuer = issuer
-        this.secret = secret
-    }
+
+    private val appConfig = HoconApplicationConfig(ConfigFactory.load())
+    private val issuer: String = appConfig.property("jwt.issuer").getString()
+    private val secret: String = appConfig.property("jwt.secret").getString()
+    val realm: String = appConfig.property("jwt.realm").getString()
 
     @JvmStatic
     fun verifier(): JWTVerifier = JWT.require(Algorithm.HMAC512(secret))
@@ -59,5 +51,4 @@ object JwtWrapper {
         .withIssuer(issuer)
         .withExpiresAt(Instant.now().plus(1, ChronoUnit.DAYS))
         .sign(Algorithm.HMAC512(secret))
-
 }

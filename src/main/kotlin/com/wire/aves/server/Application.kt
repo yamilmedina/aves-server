@@ -16,6 +16,7 @@ fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
  * - sec interceptor bearer token
  * - add websocket as app boundary
  */
+@Suppress("unused")
 fun Application.module() {
     configureKoin()
     configureContentNegotiation()
