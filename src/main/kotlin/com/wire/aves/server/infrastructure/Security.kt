@@ -25,7 +25,6 @@ fun Application.configureSecurity() {
                     infrastructureLogger.debug("Validation success for user: {}", zuid)
                     JWTPrincipal(credential.payload)
                 }.onFailure {
-                    // todo(ym) response error?
                     infrastructureLogger.error("Not valid user", it)
                 }.getOrNull()
             }

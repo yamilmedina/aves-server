@@ -1,6 +1,7 @@
 package com.wire.aves.server
 
 import com.wire.aves.server.application.configureRouting
+import com.wire.aves.server.infrastructure.DatabaseFactory
 import com.wire.aves.server.infrastructure.configureContentNegotiation
 import com.wire.aves.server.infrastructure.configureKoin
 import com.wire.aves.server.infrastructure.configureSecurity
@@ -23,4 +24,5 @@ fun Application.module() {
     configureSwaggerApiDocs()
     configureSecurity()
     configureRouting()
+    DatabaseFactory.init()
 }
