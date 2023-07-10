@@ -18,7 +18,7 @@ fun Application.configureSwaggerApiDocs() {
             description = "Aves API for openAPI documentation."
         }
         server {
-            url = "http://0.0.0.0:8080"
+            url = "http://0.0.0.0:8090"
             description = "Development Server"
         }
         securityScheme("Auth") {

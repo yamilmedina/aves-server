@@ -9,9 +9,8 @@ import com.wire.aves.server.domain.user.UserRepository
 import java.util.*
 
 /**
- * remove later:
- * this has visibility on application layer, but user repository doesn't
- * this could be called service as well, but I think it´s better since we can group a user/business action here.
+ * Allows to use perform a login, in other words validating credentials of the user.
+ * If the password/hash is valid, it will return the [UserId].
  */
 interface PerformLoginUseCase {
     operator fun invoke(email: String, password: String): Either<Exception, UserId>

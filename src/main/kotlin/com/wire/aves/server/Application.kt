@@ -13,8 +13,6 @@ fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 /**
  * TODO(ym)...
  * - add metrics + network logging interceptors with MDC.
- * - add flyway
- * - sec interceptor bearer token
  * - add websocket as app boundary
  */
 @Suppress("unused")
