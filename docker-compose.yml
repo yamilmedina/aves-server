@@ -1,6 +1,9 @@
 version: '3.8'
 services:
   aves:
+#    build:
+#      context: ./
+#      dockerfile: Dockerfile
     image: aves:latest
     environment:
       - DB_URL=jdbc:postgresql://db/aves
