@@ -8,6 +8,8 @@ import io.ktor.server.application.Application
 import io.ktor.server.auth.authentication
 import io.ktor.server.auth.jwt.JWTPrincipal
 import io.ktor.server.auth.jwt.jwt
+import java.time.Instant
+import java.time.temporal.ChronoUnit
 import java.util.*
 
 fun Application.configureSecurity() {
@@ -55,9 +57,7 @@ object JwtWrapper {
     fun generateToken(userId: UUID): String = JWT.create()
         .withSubject(userId.toString())
         .withIssuer(issuer)
-        .withExpiresAt(getExpiration())
+        .withExpiresAt(Instant.now().plus(1, ChronoUnit.DAYS))
         .sign(Algorithm.HMAC512(secret))
-
-    private fun getExpiration() = Date(System.currentTimeMillis() + 3600 * 24)
 
 }
