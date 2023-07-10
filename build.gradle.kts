@@ -7,7 +7,7 @@ plugins {
 group = "com.wire"
 version = "0.0.1"
 application {
-    mainClass.set("com.wire.aves.server.ApplicationKt")
+    mainClass.set("io.ktor.server.netty.EngineMain")
 
     val isDevelopment: Boolean = project.ext.has("development")
     applicationDefaultJvmArgs = listOf("-Dio.ktor.development=$isDevelopment")
@@ -19,7 +19,6 @@ repositories {
 
 dependencies {
     implementation(libs.ktor.server.core)
-    implementation(libs.ktor.server.yaml)
     implementation(libs.ktor.server.contentNegotiation)
     implementation(libs.ktor.serializationJson)
     implementation(libs.ktor.serializationProtobuf)
@@ -34,7 +33,9 @@ dependencies {
     implementation(libs.koin.ktor)
     implementation(libs.exposed.core)
     implementation(libs.exposed.jdbc)
-    implementation(libs.sqliteJdbc)
+    implementation(libs.postgresql)
+    implementation(libs.hikaricp)
+    implementation(libs.flyway.core)
     implementation(libs.arrow)
 
     implementation(libs.logbackClassic)
@@ -47,8 +48,5 @@ tasks {
     val jvmTargetVersion = JavaVersion.VERSION_17
     compileKotlin {
         kotlinOptions.jvmTarget = jvmTargetVersion.toString()
-    }
-    jar {
-        archiveFileName.set("aves.jar")
     }
 }

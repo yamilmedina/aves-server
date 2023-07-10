@@ -30,7 +30,7 @@ fun Route.login() = route("${VersionsResponse.currentVersion.latest()}/login") {
             val token = JwtWrapper.generateToken(userId.id)
             val result = SignInResponse(
                 accessToken = token,
-                expiresIn = getTokenExpirationInSeconds(),
+                expiresIn = TOKEN_EXPIRATION_IN_SECONDS,
                 userId = userId.id.toString()
             )
             call.also { it.response.cookies.append(Cookie("zuid", token)) }.respond(HttpStatusCode.OK, result)
@@ -38,4 +38,4 @@ fun Route.login() = route("${VersionsResponse.currentVersion.latest()}/login") {
     }
 }
 
-private fun getTokenExpirationInSeconds() = 3_600 * 24 // 1 day
+internal const val TOKEN_EXPIRATION_IN_SECONDS = 3_600 * 24 // 1 day

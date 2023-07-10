@@ -1,0 +1,35 @@
+version: '3.8'
+services:
+  aves:
+#    build:
+#      context: ./
+#      dockerfile: Dockerfile
+    image: aves:latest
+    environment:
+      - DB_URL=jdbc:postgresql://db/aves
+      - DB_USER=aves
+      - DB_PASSWORD=aves
+      - JWT_KEY=dfsdfsdfssdkjfn25k234tlk34mflskdmfsa
+      - SENDGRID_API_KEY=fknsdkfjnsdjkfnsd
+      - BASE_URL=http://localhost:8090
+      - PORT=8090
+    ports:
+      - 8090:8090
+      - 8091:8091
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13.1
+    # just for local development
+    environment:
+      - POSTGRES_USER=aves
+      - POSTGRES_PASSWORD=aves
+      - POSTGRES_DB=aves
+    ports:
+      - 5432:5432
+    volumes:
+      - aves-db:/var/lib/postgresql/data/
+
+volumes:
+  aves-db:
