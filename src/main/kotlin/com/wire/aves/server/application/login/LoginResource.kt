@@ -38,4 +38,4 @@ fun Route.login() = route("${VersionsResponse.currentVersion.latest()}/login") {
     }
 }
 
-internal const val TOKEN_EXPIRATION_IN_SECONDS = 86_400 // 1 day
+internal const val TOKEN_EXPIRATION_IN_SECONDS = 3_600 * 24 // 1 day
