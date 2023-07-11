@@ -1,4 +1,4 @@
-package com.wire.aves.server.infrastructure
+package com.wire.aves.server.infrastructure.config
 
 import io.github.smiley4.ktorswaggerui.SwaggerUI
 import io.github.smiley4.ktorswaggerui.dsl.AuthScheme

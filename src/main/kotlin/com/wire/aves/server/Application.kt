@@ -1,11 +1,11 @@
 package com.wire.aves.server
 
 import com.wire.aves.server.application.configureRouting
-import com.wire.aves.server.infrastructure.DatabaseFactory
-import com.wire.aves.server.infrastructure.configureContentNegotiation
-import com.wire.aves.server.infrastructure.configureKoin
-import com.wire.aves.server.infrastructure.configureSecurity
-import com.wire.aves.server.infrastructure.configureSwaggerApiDocs
+import com.wire.aves.server.infrastructure.config.DatabaseFactory
+import com.wire.aves.server.infrastructure.config.configureContentNegotiation
+import com.wire.aves.server.infrastructure.config.configureKoin
+import com.wire.aves.server.infrastructure.config.configureSecurity
+import com.wire.aves.server.infrastructure.config.configureSwaggerApiDocs
 import io.ktor.server.application.Application
 
 fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)

@@ -1,4 +1,4 @@
-package com.wire.aves.server.infrastructure
+package com.wire.aves.server.infrastructure.config
 
 import io.ktor.serialization.kotlinx.json.json
 import io.ktor.server.application.Application

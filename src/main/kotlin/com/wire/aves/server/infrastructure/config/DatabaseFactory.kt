@@ -1,4 +1,4 @@
-package com.wire.aves.server.infrastructure
+package com.wire.aves.server.infrastructure.config
 
 import com.typesafe.config.ConfigFactory
 import com.zaxxer.hikari.HikariConfig

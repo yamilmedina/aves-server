@@ -1,4 +1,4 @@
-package com.wire.aves.server.infrastructure
+package com.wire.aves.server.infrastructure.config
 
 import com.auth0.jwt.JWT
 import com.auth0.jwt.JWTVerifier

@@ -1,4 +1,4 @@
-package com.wire.aves.server.infrastructure
+package com.wire.aves.server.infrastructure.config
 
 import com.wire.aves.server.domain.usecase.PerformLoginUseCase
 import com.wire.aves.server.domain.usecase.PerformLoginUseCaseImpl
