@@ -17,6 +17,8 @@ So each layer does the following:
 
 <img src="https://imgpile.com/images/C7Q2Gj.png" width="800"/>
 
+**Note**: To enforce layer dependency, can be splitted into different gradle modules, but for now, we are keeping it simple.
+
 ## Build it
 
 ```
