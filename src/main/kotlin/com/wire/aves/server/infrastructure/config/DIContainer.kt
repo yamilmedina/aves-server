@@ -3,7 +3,7 @@ package com.wire.aves.server.infrastructure.config
 import com.wire.aves.server.domain.usecase.PerformLoginUseCase
 import com.wire.aves.server.domain.usecase.PerformLoginUseCaseImpl
 import com.wire.aves.server.domain.user.UserRepository
-import com.wire.aves.server.domain.user.UserRepositoryImpl
+import com.wire.aves.server.infrastructure.repository.UserRepositoryImpl
 import io.ktor.server.application.Application
 import io.ktor.server.application.install
 import org.koin.core.module.dsl.bind
