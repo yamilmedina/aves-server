@@ -8,6 +8,7 @@ data class User(
     val phone: String,
     val name: String,
     val handle: String,
+    val password: String,
     val accent: Int,
     val managedBy: String = "wire",
 )

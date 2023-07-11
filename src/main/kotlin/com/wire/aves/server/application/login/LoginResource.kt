@@ -2,7 +2,7 @@ package com.wire.aves.server.application.login
 
 import com.wire.aves.server.application.apiversion.VersionsResponse
 import com.wire.aves.server.domain.usecase.PerformLoginUseCase
-import com.wire.aves.server.infrastructure.JwtWrapper
+import com.wire.aves.server.infrastructure.config.JwtWrapper
 import com.wire.aves.server.infrastructure.logging.AppLoggers.applicationLogger
 import io.github.smiley4.ktorswaggerui.dsl.post
 import io.ktor.http.Cookie

@@ -1,4 +1,4 @@
-package com.wire.aves.server.infrastructure
+package com.wire.aves.server.infrastructure.config
 
 import io.github.smiley4.ktorswaggerui.SwaggerUI
 import io.github.smiley4.ktorswaggerui.dsl.AuthScheme
@@ -18,7 +18,7 @@ fun Application.configureSwaggerApiDocs() {
             description = "Aves API for openAPI documentation."
         }
         server {
-            url = "http://0.0.0.0:8090"
+            url = "http://localhost:8090"
             description = "Development Server"
         }
         securityScheme("Auth") {
